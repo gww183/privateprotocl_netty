@@ -34,7 +34,7 @@ public class HearBeatReqHandlet extends ChannelHandlerAdapter implements
 			throws Exception {
 		NettyMessage message =  (NettyMessage) msg;
 		if(message.getHeader() != null && message.getHeader().getType() == (byte)2) {
-			heartBeat = ctx.executor().scheduleAtFixedRate(new HeartBeatTask(ctx), 0, 5000, TimeUnit.MICROSECONDS);
+			heartBeat = ctx.executor().scheduleAtFixedRate(new HeartBeatTask(ctx), 0, 10000, TimeUnit.SECONDS);
 		} else if (message.getHeader() != null && message.getHeader().getType() == (byte) 4) {
 			System.out.println("client receive server heat beat message -->" + message);
 		} else {

@@ -45,7 +45,7 @@ public class NettyServer {
 					socketChannel.pipeline().addLast(new NettyMessageEncoder());
 					socketChannel.pipeline().addLast("readTimeoutHandler", new ReadTimeoutHandler(50));
 					socketChannel.pipeline().addLast(new LoginAuthRespHandler());
-//					socketChannel.pipeline().addLast("HeartBeatHandler", new HeartBeatRespHandler());
+					socketChannel.pipeline().addLast("HeartBeatHandler", new HeartBeatRespHandler());
 				}
 			});
 			ChannelFuture future =  bootstrap.bind(port).sync();

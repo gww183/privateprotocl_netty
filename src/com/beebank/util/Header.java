@@ -1,5 +1,6 @@
 package com.beebank.util;
 
+import java.io.Serializable;
 import java.util.Map;
 
 /**
@@ -7,7 +8,11 @@ import java.util.Map;
  * @author gww
  * 2018年6月29日
  */
-public class Header {
+public class Header{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	// 校验码
 	private int crcCode = 0xacef0101;
 	// 长度

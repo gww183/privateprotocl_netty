@@ -1,6 +1,11 @@
 package com.beebank.util;
 
+
 public class NettyMessage {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	// 头
 	private Header header;
 	// 体

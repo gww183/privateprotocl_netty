@@ -35,6 +35,7 @@ public class NettyMessageEncoder extends MessageToMessageEncoder<NettyMessage> {
 			sendBuf.writeByte(msg.getHeader().getType());
 			sendBuf.writeByte(msg.getHeader().getPriority());
 			sendBuf.writeInt(msg.getHeader().getAttachment() == null ? 0 : msg.getHeader().getAttachment().size());
+
 			
 			String key = null;
 			byte[] keyArray = null;
@@ -54,13 +55,12 @@ public class NettyMessageEncoder extends MessageToMessageEncoder<NettyMessage> {
 			 value = null;
 			 if(msg.getBody() != null) {
 				 marshallingEncoder.encode(ctx, msg.getBody(), sendBuf);
-			 } else {
-				 sendBuf.writeInt(0);
-				 sendBuf.setInt(4, sendBuf.readableBytes());
 			 }
 			 
+			 int readableBytes = sendBuf.readableBytes();
+			 sendBuf.setInt(4, readableBytes);
+			 
 			 out.add(sendBuf);
-			 System.out.println("客户端编码字符 --> " + new String(sendBuf.array()));
 		} catch(Throwable e) {
 			e.printStackTrace();
 		}

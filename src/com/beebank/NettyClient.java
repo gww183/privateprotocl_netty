@@ -40,11 +40,11 @@ public class NettyClient {
 
 				@Override
 				protected void initChannel(SocketChannel socketChannel) throws Exception {
-					socketChannel.pipeline().addLast(new NettyMessageDecoder(1024 * 1024, 4, 4,-8,0));
-					socketChannel.pipeline().addLast("MessageEncoder", new NettyMessageEncoder());
+					socketChannel.pipeline().addLast(new NettyMessageDecoder(1024 * 1024, 4, 4, -8, 0));
+					socketChannel.pipeline().addLast(new NettyMessageEncoder());
 					socketChannel.pipeline().addLast("readTimeoutHandler", new ReadTimeoutHandler(50));
-					socketChannel.pipeline().addLast("LoginAuthHandler", new LoginAuthReqHandler());
-//					socketChannel.pipeline().addLast("HeartBeatHandler", new HearBeatReqHandlet());
+					socketChannel.pipeline().addLast(new LoginAuthReqHandler());
+					socketChannel.pipeline().addLast("HeartBeatHandler", new HearBeatReqHandlet());
 				}
 			});
 			

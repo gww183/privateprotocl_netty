@@ -15,7 +15,7 @@ public class NettyMessageDecoder extends LengthFieldBasedFrameDecoder {
 	private NettyMarshallingDecoder marshallingDecoder;
 	
 	public NettyMessageDecoder(int maxFrameLength, int lengthFieldOffset,
-			int lengthFieldLength,int lengthAdjustment, int initialBytesToStrip) {
+			int lengthFieldLength,  int lengthAdjustment, int initialBytesToStrip) {
 		super(maxFrameLength, lengthFieldOffset, lengthFieldLength, lengthAdjustment, initialBytesToStrip);
 		marshallingDecoder =  MarshallingCodecCFactory.buildMarshallingDecoder();
 	}

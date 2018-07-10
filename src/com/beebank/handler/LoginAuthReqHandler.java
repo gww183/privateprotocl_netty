@@ -19,7 +19,6 @@ public class LoginAuthReqHandler extends ChannelHandlerAdapter implements
 		NettyMessage nettyMessage = new NettyMessage();
 		Header header = new Header();
 		header.setType((byte)1);
-		header.setSessionId(1222222222L);
 		nettyMessage.setHeader(header);
 		nettyMessage.setBody("It is request");
 		return nettyMessage;
